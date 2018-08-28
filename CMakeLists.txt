@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.5.1)
+
+set(TARGET_NAME SignalSlot)
+project(${TARGET_NAME} VERSION 0.1.0 LANGUAGES CXX)
+
+set(CMAKE_VERBOSE_MAKEFILE 1)
+set(CMAKE_CXX_FLAGS "-g -Werror=unused-parameter")
+set(CMAKE_CXX_STANDARD 17)
+set(ROOT_ROOT ${CMAKE_SOURCE_DIR}/..)
+
+
+get_filename_component(DISTRO_INCLUDE ${CMAKE_SOURCE_DIR}/dist/include ABSOLUTE)
+get_filename_component(DISTRO_LIBRARY ${CMAKE_SOURCE_DIR}/dist/lib ABSOLUTE)
+
+file(MAKE_DIRECTORY ${DISTRO_INCLUDE})
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/signalslot.h ${DISTRO_INCLUDE})
+
+#POST BUILD COMMANDS
+#add_custom_command(TARGET ${TARGET_NAME} PRE_BUILD 
+#    COMMAND ${CMAKE_COMMAND} -E copy lib${TARGET_NAME}.a ${DISTRO_LIBRARY}
+#    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/*.h ${DISTRO_INCLUDE}
+#)
+
