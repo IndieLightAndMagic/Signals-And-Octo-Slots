@@ -6,11 +6,10 @@ project(${TARGET_NAME} VERSION 0.1.0 LANGUAGES CXX)
 set(CMAKE_VERBOSE_MAKEFILE 1)
 set(CMAKE_CXX_FLAGS "-g -Werror=unused-parameter")
 set(CMAKE_CXX_STANDARD 17)
-set(ROOT_ROOT ${CMAKE_SOURCE_DIR}/..)
+set(GTECH_DIR $ENV{GTECH_ROOT})
 
 
-get_filename_component(DISTRO_INCLUDE ${CMAKE_SOURCE_DIR}/dist/include ABSOLUTE)
-get_filename_component(DISTRO_LIBRARY ${CMAKE_SOURCE_DIR}/dist/lib ABSOLUTE)
+get_filename_component(DISTRO_INCLUDE ${GTECH_DIR}/3rd/include/SignalSlot ABSOLUTE)
 
 file(MAKE_DIRECTORY ${DISTRO_INCLUDE})
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/signalslot.h ${DISTRO_INCLUDE})
@@ -20,4 +19,6 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/signalslot.
 #    COMMAND ${CMAKE_COMMAND} -E copy lib${TARGET_NAME}.a ${DISTRO_LIBRARY}
 #    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/*.h ${DISTRO_INCLUDE}
 #)
+
+
 
