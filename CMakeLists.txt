@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5.1)
 
-set(TARGET_NAME SignalSlot)
+set(TARGET_NAME GTechUtils)
 project(${TARGET_NAME} VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_VERBOSE_MAKEFILE 1)
@@ -9,10 +9,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(GTECH_DIR $ENV{GTECH_ROOT})
 
 
-get_filename_component(DISTRO_INCLUDE ${GTECH_DIR}/3rd/include/SignalSlot ABSOLUTE)
+get_filename_component(DISTRO_INCLUDE ${GTECH_DIR}/3rd/include/${TARGET_NAME} ABSOLUTE)
 
 file(MAKE_DIRECTORY ${DISTRO_INCLUDE})
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/signalslot.h ${DISTRO_INCLUDE})
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/weakmap.h ${DISTRO_INCLUDE})
 
 #POST BUILD COMMANDS
 #add_custom_command(TARGET ${TARGET_NAME} PRE_BUILD 
