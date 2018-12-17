@@ -6,11 +6,6 @@
 #include <vector>
 #include <map>
 
-// A signal object may call multiple slots with the
-// same signature. You can connect functions to the signal
-// which will be called when the emit() method on the
-// signal object is invoked. Any argument passed to emit()
-// will be passed to the given functions.
 namespace GTech{
 
     template <typename V, typename K, typename C>
