@@ -12,7 +12,7 @@
 // will be passed to the given functions.
 namespace GTech{
 
-    static int signalId{0};
+    [[maybe_unused]]static int signalId{0};
     template <typename... Args>
     class Signal {
 
